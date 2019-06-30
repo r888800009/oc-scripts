@@ -9,7 +9,7 @@ local entrance_len_y = 0
 
 -- entrance y axis value
 -- note the y is world y not waypoint y
-local farm_entrance_data = {
+local farm_data = {
   { y = 117, down = 6, downOffset = -1 },
   { y = 111, down = 6, downOffset = 1 },
   { y = 107, down = 6, downOffset = -1 },
@@ -123,7 +123,7 @@ function init()
 end
 
 function traversingFram()
-  for key, value in pairs(farm_entrance_data) do
+  for key, value in pairs(farm_data) do
     -- set height
     drone.setLightColor(0xff0000)
     move(wp_x, value.y + 0.5, wp_z, true)
