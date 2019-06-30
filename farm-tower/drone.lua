@@ -69,7 +69,16 @@ function savePos()
 end
 
 function restorePos()
-  move(s_x, s_y, s_z, true)
+  x, y, z = nav.getPosition()
+  if s_y > y then -- y first
+    move(x, s_y, z, true, 0.3)
+    move(s_x, s_y, z, true, 0.3)
+    move(s_x, s_y, s_z, true, 0.3)
+  else -- y last
+    move(s_x, y, z, true, 0.3)
+    move(s_x, y, s_z, true, 0.3)
+    move(s_x, s_y, s_z, true, 0.3)
+  end
 end
 
 function initWaypoint()
