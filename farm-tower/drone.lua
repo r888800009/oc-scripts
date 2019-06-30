@@ -18,6 +18,7 @@ local farm_offset_x = 0
 local farm_offset_z = 1
 
 local nav_x, nav_y, nav_z
+local wp_x, wp_y, wp_z
 local wp_range = 256
 local wp_name = "Robot Pipe"
 
@@ -77,6 +78,7 @@ function initWaypoint()
     if wps[i].label == wp_name then
       move(wps[i].position[1], wps[i].position[2], wps[i].position[3])
       correctionXYZ()
+      wp_x, wp_y, wp_z = nav.getPosition()
     end
   end
 end
@@ -87,12 +89,15 @@ end
 
 function traversingFram()
   for key, value in pairs(farm_entrance_data) do
+    -- set height
     drone.setLightColor(0xff0000)
-    move(nav_x, value + 0.5, nav_z, true)
+    move(wp_x, value.y + 0.5, wp_z, true)
 
+    -- into farm
     drone.setLightColor(0x00ff00)
     move(entrance_len_x, entrance_len_y, entrance_len_z)
 
+    -- out farm
     drone.setLightColor(0x0000ff)
     move(-entrance_len_x, -entrance_len_y, -entrance_len_z)
   end
