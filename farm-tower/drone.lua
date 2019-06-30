@@ -61,6 +61,16 @@ function farming()
   end
 end
 
+local s_x, s_y, s_z
+
+function savePos()
+  s_x, s_y, s_z = nav.getPosition()
+end
+
+function restorePos()
+  move(s_x, s_y, s_z, true)
+end
+
 function initWaypoint()
   local wps = nav.findWaypoints(wp_range)
   for i = 1, wps.n do
