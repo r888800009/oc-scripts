@@ -9,13 +9,13 @@ local entrance_len_y = 0
 
 -- entrance y axis value
 -- note the y is world y not waypoint y
-local fram_entrance_data = {
+local farm_entrance_data = {
   117, 111, 107, 101, 97, 91, 87, 81
 }
 
 -- offset is farmland x: 0 z: 0 relative entrance
-local fram_offset_x = 0
-local fram_offset_z = 1
+local farm_offset_x = 0
+local farm_offset_z = 1
 
 local nav_x, nav_y, nav_z
 local wp_range = 256
@@ -86,7 +86,7 @@ function init()
 end
 
 function traversingFram()
-  for key, value in pairs(fram_entrance_data) do
+  for key, value in pairs(farm_entrance_data) do
     drone.setLightColor(0xff0000)
     move(nav_x, value + 0.5, nav_z, true)
 
